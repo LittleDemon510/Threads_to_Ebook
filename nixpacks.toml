@@ -1,0 +1,49 @@
+[start]
+cmd = "gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
+```
+
+Commit both files.
+
+---
+
+## Step 3 — Go to Railway
+
+1. Go to **railway.app** → log in
+2. You should see your project on the dashboard — click it
+3. You'll see a card/box with your GitHub repo name on it — click that card
+4. Now you should see tabs: **Deployments, Logs, Variables, Settings, Metrics**
+5. Click **Deploy** or it may auto-trigger from your GitHub push
+
+---
+
+## Step 4 — Watch the build logs
+
+Click **Deployments** → click the latest deployment → you'll see live logs like:
+```
+Installing Python 3.11.0
+Installing dependencies from requirements.txt
+✓ flask installed
+✓ reportlab installed
+✓ Build successful
+Starting gunicorn...
+```
+
+If it fails, copy the red error text and paste it here — I'll fix it immediately.
+
+---
+
+## Step 5 — Get your live URL
+
+Once it says **Active** or **Success**:
+1. Click your service card
+2. Look for **"Domains"** section
+3. Click **"Generate Domain"** if no URL exists yet
+4. You'll get something like `https://threads-ebook-production.up.railway.app`
+
+---
+
+## Step 6 — Test it works
+
+Open a new browser tab and go to:
+```
+https://YOUR-RAILWAY-URL.up.railway.app/health
